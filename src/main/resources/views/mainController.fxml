@@ -34,19 +34,19 @@
         </rowConstraints>
          <children>
             <ChoiceBox fx:id="food1" prefHeight="26.0" prefWidth="180.0" />
-            <TextField fx:id="amount1" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" />
+            <TextField fx:id="textAmount1" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" />
             <Label fx:id="food1Label" text="kg/liter" GridPane.columnIndex="2" />
             <ChoiceBox fx:id="food2" prefHeight="26.0" prefWidth="180.0" GridPane.rowIndex="1" />
-            <TextField fx:id="amount2" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="textAmount2" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label fx:id="food2Label" text="kg/liter" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <ChoiceBox fx:id="food3" prefHeight="26.0" prefWidth="180.0" GridPane.rowIndex="2" />
             <Label fx:id="food3Label" text="kg/liter" GridPane.columnIndex="2" GridPane.rowIndex="2" />
-            <TextField fx:id="amount3" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="textAmount3" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="food4" prefHeight="26.0" prefWidth="180.0" GridPane.rowIndex="3" />
             <Label fx:id="food4Label" text="kg/liter" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <TextField fx:id="amount4" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <TextField fx:id="amount5" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="amount6" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <TextField fx:id="textAmount4" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <TextField fx:id="textAmount5" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <TextField fx:id="textAmount6" prefHeight="30.0" prefWidth="7.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
             <Label fx:id="food5Label" text="kg/liter" GridPane.columnIndex="2" GridPane.rowIndex="4" />
             <Label fx:id="food6Label" text="kg/liter" GridPane.columnIndex="2" GridPane.rowIndex="5" />
             <ChoiceBox fx:id="food5" prefHeight="26.0" prefWidth="180.0" GridPane.rowIndex="4" />
@@ -56,7 +56,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </GridPane>
-      <Button layoutX="348.0" layoutY="460.0" mnemonicParsing="false" onAction="#calculate" text="MEHET!">
+      <Button layoutX="348.0" layoutY="460.0" mnemonicParsing="false" onAction="#buttonCalculate" text="MEHET!">
          <font>
             <Font size="20.0" />
          </font>
