@@ -13,6 +13,28 @@
         <url>unideb.hu</url>
     </organization>
     <inceptionYear>2018</inceptionYear>
+    <description>A program meg tudja adni egy étel körülbelüli kalóriatartalmát , összetevői megadása által.
+        Ezután pedig megmutatná, hogy mennyi mozgással tudnánk ezt a kalóriamennyiséget ledolgozni, különböző edzésformák segítségével.</description>
+    <url>https://github.com/rblovas/CalorieCounter.git</url>
+    <developers>
+        <developer>
+            <name>Rita Barbara Lovas</name>
+            <email>lovasrita21@gmail.com</email>
+            <organization>University of Debrecen</organization>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:https://github.com/rblovas/CalorieCounter.git</connection>
+        <url>https://github.com/rblovas/CalorieCounter.git</url>
+        <tag>master</tag>
+    </scm>
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url></url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
 
     <properties>
         <!-- Resources állományok kódlap beállítása ("[WARNING] Using platform encoding ??? actually) to copy filtered resources, i.e. build is platform dependent!") -->

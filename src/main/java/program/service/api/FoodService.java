@@ -1,4 +1,4 @@
-package program;
+package program.service.api;
 
 /*-
  * #%L
@@ -19,24 +19,15 @@ package program;
  * limitations under the License.
  * #L%
  */
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Stage;
+import program.model.FoodEntity;
 
-public class Main extends Application {
+import java.util.List;
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+public interface FoodService {
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/views/mainController.fxml"));
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
-        primaryStage.setTitle("Kalória Számláló");
-    }
+    FoodEntity getFood(String foodName);
+
+    void createFood(FoodEntity foodEntity);
+
+    void uploadFoods(List<String> foods, List<Integer> calories);
 }
