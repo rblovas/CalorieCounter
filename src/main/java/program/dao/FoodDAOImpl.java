@@ -29,15 +29,27 @@ import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
+/**
+ * Az ételek DAO függvényeit tartalmazó interfész implementálása.
+ */
 @Slf4j
 public class FoodDAOImpl implements FoodDAO {
 
     private EntityManager entityManager;
 
+    /**
+     * Az osztály konstruktora.
+     * @param entityManager - A paraméterként kapott {@link EntityManager}.
+     */
     public FoodDAOImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
 
+    /**
+     * Egy étel entitás lekérését teszi lehetővé, nevének megadása által.
+     * @param foodName - a lekérdezni kívánt étel neve.
+     * @return - étel entitás.
+     */
     @Override
     public FoodEntity getFood(String foodName) {
 
@@ -47,18 +59,13 @@ public class FoodDAOImpl implements FoodDAO {
         return (FoodEntity) query.getSingleResult();
     }
 
-    public List<FoodEntity> getAllFoodName() {
+    /**
+     * Lekéri az ételeket tartalmazó adatbázisból az összes entitást.
+     * @return étel entitások listája.
+     */
+    @Override
+    public List<FoodEntity> getAllFood() {
         TypedQuery<FoodEntity> typedQuery = entityManager.createQuery("select f from FoodEntity f", FoodEntity.class);
         return typedQuery.getResultList();
     }
-
-
-    @Override
-    public void persist(FoodEntity foodEntity) {
-        entityManager.getTransaction().begin();
-        entityManager.persist(foodEntity);
-        entityManager.getTransaction().commit();
-    }
-
-
 }

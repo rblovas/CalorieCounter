@@ -25,9 +25,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import program.utility.Manager;
 
+/**
+ * A programom main függvényét tartalmazza.
+ */
 public class Main extends Application {
 
+    /**
+     * Main függvény.
+     * @param args - parancssori argumentum
+     */
     public static void main(String[] args) {
         launch(args);
     }
@@ -39,5 +47,11 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
         primaryStage.setTitle("Kalória Számláló");
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        Manager.getInstance().close();
     }
 }

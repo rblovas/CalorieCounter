@@ -25,13 +25,20 @@ import program.model.FoodEntity;
 import java.util.List;
 
 /**
- * DAO függvényeket tartalmazó interfész
+ * Ételek DAO függvényeit tartalmazó interfész.
  */
 public interface FoodDAO {
 
+    /**
+     * Egy étel entitás lekérését teszi lehetővé, nevének megadása által.
+     * @param foodName - lekérdezni kívánt étel neve.
+     * @return - étel entitás.
+     */
     FoodEntity getFood(String foodName);
 
-    List<FoodEntity> getAllFoodName();
-
-    void persist(FoodEntity foodEntity);
+    /**
+     * Lekéri az ételeket tartalmazó adatbázisból az összes entitást.
+     * @return étel entitás.
+     */
+    List<FoodEntity> getAllFood();
 }

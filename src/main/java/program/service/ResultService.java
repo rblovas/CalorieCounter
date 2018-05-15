@@ -20,14 +20,25 @@ package program.service;
  * #L%
  */
 
+/**
+ * Az eredmény tárolására és lekérdezésére szolgáló osztály.
+ */
 public class ResultService {
 
     private static int sum;
 
+    /**
+     * Az eredmény lekérdezését teszi lehetővé.
+     * @return - eredmény.
+     */
     public static int getSum() {
         return ResultService.sum;
     }
 
+    /**
+     * Az eredmény beállítására szolgál.
+     * @param sum - eredmény.
+     */
     public static void setSum(int sum) {
         ResultService.sum = sum;
     }

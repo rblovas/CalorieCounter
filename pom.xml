@@ -4,6 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <!-- mvn license:update-file-header -Dlicense.licenseName="apache_v2"-->
+
     <groupId>hu.unideb.inf.pk</groupId>
     <artifactId>KaloriaSzamolo</artifactId>
     <version>0.0.1</version>

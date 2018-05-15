@@ -26,6 +26,9 @@ import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
+/**
+ * Ételeket tartalmazó adatbázistábla.
+ */
 @Slf4j
 @Entity
 @Table(name = "FOODS")
@@ -33,14 +36,22 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class FoodEntity {
 
+    /**
+     * Az étel id-ja.
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID", nullable = false, updatable = false)
     private Long id;
 
+    /**
+     * Az étel neve.
+     */
     @Column(name = "FOODNAME")
     private String foodName;
 
+    /**
+     * Az étel kalóriatartalma.
+     */
     @Column(name = "KCAL")
     private int kcal;
 

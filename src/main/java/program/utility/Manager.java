@@ -26,11 +26,20 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ * Adatbázis-kapcsolatokat felügyelő singleton osztály.
+ */
 @Slf4j
 public class Manager implements AutoCloseable {
 
+    /**
+     * {@link EntityManagerFactory} példánya.
+     */
     private static EntityManagerFactory entityManagerFactory;
 
+    /**
+     * {@link EntityManager} példánya.
+     */
     private static EntityManager entityManager;
 
     static {
@@ -38,6 +47,10 @@ public class Manager implements AutoCloseable {
         entityManager = entityManagerFactory.createEntityManager();
     }
 
+    /**
+     * {@link EntityManager} konstans példánya.
+     * @return - a konstans példány.
+     */
     public static EntityManager getInstance() {
         return entityManager;
     }
