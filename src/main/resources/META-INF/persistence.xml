@@ -30,12 +30,17 @@
             <property name="javax.persistence.jdbc.driver" value="org.apache.derby.jdbc.EmbeddedDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:derby:foodDB;create=true"/>
 
+            <property name="javax.persistence.sql-load-script-source"
+                      value="META-INF/sql/load.sql" />
+
             <property name="javax.persistence.jdbc.user" value="APP"/>
             <property name="javax.persistence.jdbc.password" value="APP"/>
 
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
             <property name="hibernate.show_sql" value="true"/>
+
+
 
         </properties>
     </persistence-unit>

@@ -9,9 +9,9 @@ package program.controller;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,38 +19,42 @@ package program.controller;
  * limitations under the License.
  * #L%
  */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
+import program.dao.WorkoutDAOImpl;
 import program.service.ResultService;
+import program.service.WorkoutServiceImpl;
+import program.service.api.WorkoutService;
+import program.utility.Manager;
 
-import java.util.Arrays;
-import java.util.List;
-
-
+@Slf4j
 public class ResultController extends Controller {
     public Label labelCaloria;
     public TextArea textArea;
 
     private Stage dialogStage;
+    private WorkoutService workoutService = new WorkoutServiceImpl(new WorkoutDAOImpl(Manager.getInstance()));
 
     @FXML
     private void initialize() {
-        List<String> workouttypes = Arrays.asList("Kocogás", "Futás-közepes tempó", "Biciklizés", "Úszás", "Aerobik", "Testépítés");
-        List<Float> caloriesPerTen = Arrays.asList(9.0f, 15.0f, 9.0f, 12.0f, 8.0f, 7.0f);
-
         int sum = ResultService.getSum();
         labelCaloria.setText(String.valueOf(sum));
+        log.info("Kiírásra került a kiszámolt kalóriamennyiség");
 
-        for (int type = 0; type < 6; type++) {
-            textArea.appendText(workouttypes.get(type) + "\t\t\t" + (int) (sum / caloriesPerTen.get(type)) + "\n");
+        for (long type = 1; type < 7; type++) {
+            textArea.appendText(workoutService.getWorkoutNameById(type) + "\t\t" + (int) (sum / workoutService.getWorkoutCalorieById(type)) + "\n");
         }
+        log.info("Az összes gyakorlat és perc kiírásra került.");
     }
 
     public void goToMainpage(ActionEvent actionEvent) {
-        sceneSwitch(dialogStage, "mainController", actionEvent);
+        log.info("A felhasználó visszament a kezdőlapra.");
+        sceneSwitch("mainController", actionEvent);
     }
 }
 

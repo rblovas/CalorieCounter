@@ -1,0 +1,13 @@
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (1,'-',0);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (2,'tej',440);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (3,'főtt tojás',82);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (4,'cukor',4000);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (5,'liszt',3370);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (6,'alma',78);
+insert into APP.FOODS(ID, FOODNAME, KCAL) VALUES (7,'talicska',5000);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (1,'Kocogás',9.0);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (2,'Futás',15.0);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (3,'Biciklizés',9.0);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (4,'Úszás', 12.0);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (5,'Aerobik',8.0);
+insert into APP.WORKOUTS(ID, WORKOUTNAME, KCAL) VALUES (6,'Testépítés',7.0);

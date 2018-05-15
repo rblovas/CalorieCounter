@@ -31,7 +31,7 @@
     <licenses>
         <license>
             <name>Apache License 2.0</name>
-            <url></url>
+            <url>https://raw.githubusercontent.com/rblovas/CalorieCounter/master/LICENSE.md</url>
             <distribution>repo</distribution>
         </license>
     </licenses>
@@ -56,8 +56,6 @@
         <!-- Maven teszt fázis futtatás kikapcsolása-->
         <maven.test.skip>true</maven.test.skip>
 
-        <!-- JavaFX futtatás argumentumok -->
-        <runfx.args>-jar "${project.build.directory}/${project.build.finalName}.jar"</runfx.args>
     </properties>
     <dependencies>
         <!-- Lombok: @Getter/@Setter/@Data/... -->
@@ -83,7 +81,7 @@
         <dependency>
             <groupId>org.hibernate</groupId>
             <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.16.Final</version>
+            <version>5.2.17.Final</version>
             <scope>compile</scope>
         </dependency>
 
@@ -117,8 +115,36 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-enforcer-plugin</artifactId>
                 <version>3.0.0-M1</version>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireJavaVersion>
+                                    <version>[1.8,)</version>
+                                    <message>JDK 1.8.x or higher required.</message>
+                                </requireJavaVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -152,6 +178,49 @@
                 </executions>
             </plugin>
         </plugins>
+        <resources>
+            <resource>
+                <directory>src/main/resources/</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
     </build>
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-report-plugin</artifactId>
+                <version>2.21.0</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jxr-plugin</artifactId>
+                <version>2.5</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-checkstyle-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                    <configLocation>${basedir}/src/main/resources/checkstyle/checkstyle.xml</configLocation>
+                    <excludes>program/controller/*</excludes>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <version>4.2.0</version>
+                <configuration>
+                    <generatePdf>true</generatePdf>
+                    <generateHtml>true</generateHtml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
 </project>

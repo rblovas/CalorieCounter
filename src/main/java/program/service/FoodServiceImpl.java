@@ -9,9 +9,9 @@ package program.service;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,11 +19,12 @@ package program.service;
  * limitations under the License.
  * #L%
  */
+
 import program.dao.FoodDAOImpl;
 import program.model.FoodEntity;
 import program.service.api.FoodService;
-import program.utility.Manager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class FoodServiceImpl implements FoodService {
@@ -41,58 +42,81 @@ public class FoodServiceImpl implements FoodService {
     }
 
     @Override
+    public List<String> getAllFoodName() {
+
+        List<String> names = new ArrayList<>();
+
+        List<FoodEntity> entities = new ArrayList<>(dao.getAllFoodName());
+
+        for (FoodEntity asd : entities) {
+            names.add(asd.getFoodName());
+        }
+
+        return names;
+    }
+
+
+    public void fillWithValues(List<String> foodList, List<Integer> calories) {
+
+        for (String asd : foodList) {
+            calories.add(dao.getFood(asd).getKcal());
+        }
+
+    }
+
+    @Override
     public void createFood(FoodEntity foodEntity) {
         dao.persist(foodEntity);
     }
 
-    public void uploadFoods(List<String> foods, List<Integer> calories) {
-        FoodService foodService = new FoodServiceImpl(new FoodDAOImpl(Manager.getInstance()));
-        FoodEntity foodEntity = new FoodEntity();
-
-        foodEntity.setFoodName("tej");
-        foodEntity.setKcal(440);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-        foodEntity.setFoodName("főtt tojás");
-        foodEntity.setKcal(82);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-        foodEntity.setFoodName("cukor");
-        foodEntity.setKcal(4000);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-        foodEntity.setFoodName("liszt");
-        foodEntity.setKcal(3370);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-
-        foodEntity.setFoodName("alma");
-        foodEntity.setKcal(78);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-
-        foodEntity.setFoodName("talicska");
-        foodEntity.setKcal(5000);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-        foodEntity.setFoodName("-");
-        foodEntity.setKcal(0);
-        foodService.createFood(foodEntity);
-        foods.add(foodEntity.getFoodName());
-        calories.add(foodEntity.getKcal());
-
-
-    }
+//    public void uploadFoods(List<String> foods, List<Integer> calories) {
+//        FoodService foodService = new FoodServiceImpl(new FoodDAOImpl(Manager.getInstance()));
+//        FoodEntity foodEntity = new FoodEntity();
+//
+//        foodEntity.setFoodName("tej");
+//        foodEntity.setKcal(440);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//        foodEntity.setFoodName("főtt tojás");
+//        foodEntity.setKcal(82);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//        foodEntity.setFoodName("cukor");
+//        foodEntity.setKcal(4000);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//        foodEntity.setFoodName("liszt");
+//        foodEntity.setKcal(3370);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//
+//        foodEntity.setFoodName("alma");
+//        foodEntity.setKcal(78);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//
+//        foodEntity.setFoodName("talicska");
+//        foodEntity.setKcal(5000);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//        foodEntity.setFoodName("-");
+//        foodEntity.setKcal(0);
+//        foodService.createFood(foodEntity);
+//        foods.add(foodEntity.getFoodName());
+//        calories.add(foodEntity.getKcal());
+//
+//
+//    }
 }

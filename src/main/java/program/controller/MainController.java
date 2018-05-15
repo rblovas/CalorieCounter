@@ -9,9 +9,9 @@ package program.controller;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *      http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -19,22 +19,23 @@ package program.controller;
  * limitations under the License.
  * #L%
  */
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import lombok.extern.slf4j.Slf4j;
 import program.dao.FoodDAOImpl;
 import program.service.FoodServiceImpl;
 import program.service.ResultService;
 import program.service.api.FoodService;
 import program.utility.Manager;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-
+@Slf4j
 public class MainController extends Controller {
 
     @FXML
@@ -61,22 +62,19 @@ public class MainController extends Controller {
 
     private Stage dialogStage;
 
-    private List<String> foods = new ArrayList<>();
-    private List<Integer> calories = new ArrayList<>();
-
-
     @FXML
     private void initialize() {
-
         ResultService.setSum(0);
 
-        foodService.uploadFoods(foods, calories);
-
         List<ChoiceBox> boxes = Arrays.asList(food1, food2, food3, food4, food5, food6);
+        List<String> foodlist;
+        foodlist = foodService.getAllFoodName();
 
-        for (int box = 0; box < 6; box++) {
-            boxes.get(box).getItems().addAll(foods);
+        for (ChoiceBox box : boxes) {
+            box.getItems().addAll(foodlist);
         }
+
+        log.info("Feltöltődött az összes adat a choiceboxokba.");
     }
 
 
@@ -84,7 +82,6 @@ public class MainController extends Controller {
     public void buttonCalculate(ActionEvent actionEvent) {
         List<ChoiceBox> boxes = Arrays.asList(food1, food2, food3, food4, food5, food6);
         List<TextField> texts = Arrays.asList(textAmount1, textAmount2, textAmount3, textAmount4, textAmount5, textAmount6);
-        /* List<Integer> calories = Arrays.asList(440, 82, 4000, 3370, 78, 5000, 0);*/
 
         try {
             int sum = 0;
@@ -93,31 +90,24 @@ public class MainController extends Controller {
                     texts.get(text).setText("0");
                 }
                 if (boxes.get(text).getItems().isEmpty()) {
-                    boxes.get(text).getSelectionModel().selectLast();
+                    boxes.get(text).getSelectionModel().selectFirst();
                 }
                 if (Integer.parseInt(texts.get(text).getText()) < 0) {
-                    errorBox("Nem megfelelő adatot adtál meg darabszámnak. Legalább 0-val kell egyenlőnek lennie.", "Hiba", "Hiba történt!");
+                    log.warn("Negatív számot adott meg a felhasználó darabszámnak.");
+                    errorBox("Nem megfelelő adatot adtál meg darabszámnak. Nem lehet negatív.", "Hiba", "Hiba történt!");
                 }
                 if (Integer.parseInt(texts.get(text).getText()) != 0 && !boxes.get(text).getSelectionModel().getSelectedItem().equals("-")) {
-                    for (int i = 0; i < foods.size(); i++) {
-                        if (foods.get(i) == boxes.get(text).getSelectionModel().getSelectedItem()) {
-                            sum += calories.get(i) * Integer.parseInt(texts.get(text).getText());
-                        }
-                    }
-
+                    sum += Integer.parseInt(texts.get(text).getText()) * foodService.getFood(boxes.get(text).getSelectionModel().getSelectedItem().toString()).getKcal();
 
                 }
             }
 
-            try {
-                ResultService.setSum(sum);
-                sceneSwitch(dialogStage, "resultController", actionEvent);
-            } catch (Exception e) {
-                errorBox("A program nem tud átlépni a következő oldalra, mert béna a programozója.", "Hiba", "Hiba történt!");
-            }
-
+            ResultService.setSum(sum);
+            log.info("A felhasználó helyesen megadta az összetevőket és a mennyiségeket és átlép a következő oldalra.");
+            sceneSwitch("resultController", actionEvent);
 
         } catch (Exception e) {
+            log.error("Nem megfelelő típusú adatot adott meg darabszámnak a felhasználó.");
             errorBox("Nem megfelelő adatot adtál meg darabszámnak. Számot adj meg", "Hiba", "Hiba történt!");
         }
     }
