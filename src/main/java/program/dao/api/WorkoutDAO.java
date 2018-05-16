@@ -49,4 +49,5 @@ public interface WorkoutDAO {
     float getWorkoutCalorieById(Long id);
 
     void persist(WorkoutEntity entity);
+    void delete(WorkoutEntity entity);
 }

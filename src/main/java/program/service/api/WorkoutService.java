@@ -27,6 +27,8 @@ import program.model.WorkoutEntity;
  */
 public interface WorkoutService {
 
+    WorkoutEntity getWorkout(String name);
+
     /**
      * Egy edzés nevének megkapása id alapján.
      * @param id - edzés idja.
@@ -42,4 +44,5 @@ public interface WorkoutService {
     float getWorkoutCalorieById(Long id);
 
     void createWorkout(WorkoutEntity workoutEntity);
+    void deleteWorkout(WorkoutEntity workoutEntity);
 }

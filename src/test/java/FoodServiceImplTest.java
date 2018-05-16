@@ -1,3 +1,4 @@
+import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -29,6 +30,14 @@ public class FoodServiceImplTest {
         FoodDAOImpl dao = new FoodDAOImpl(Manager.getInstance());
         FoodServiceImpl foodService = new FoodServiceImpl(dao);
         foodService.createFood(createTestEntity());
+    }
+
+    @AfterClass
+    public static void after(){
+        FoodDAOImpl dao = new FoodDAOImpl(Manager.getInstance());
+        FoodServiceImpl foodService = new FoodServiceImpl(dao);
+        foodService.deleteFood(foodService.getFood("Teszt"));
+
     }
 
     private FoodEntity food = createTestEntity();

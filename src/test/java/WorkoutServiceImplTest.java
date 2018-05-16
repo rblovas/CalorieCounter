@@ -1,7 +1,4 @@
-import org.junit.After;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.*;
 import program.dao.WorkoutDAOImpl;
 import program.model.WorkoutEntity;
 import program.service.WorkoutServiceImpl;
@@ -30,6 +27,15 @@ public class WorkoutServiceImplTest {
         WorkoutServiceImpl workoutService = new WorkoutServiceImpl(dao);
         workoutService.createWorkout(createTestEntity());
     }
+
+    @AfterClass
+    public static void after(){
+        WorkoutDAOImpl dao = new WorkoutDAOImpl(Manager.getInstance());
+        WorkoutServiceImpl workoutService = new WorkoutServiceImpl(dao);
+        workoutService.deleteWorkout(workoutService.getWorkout("Teszt"));
+
+    }
+
     private WorkoutEntity workout = createTestEntity();
 
     @Test

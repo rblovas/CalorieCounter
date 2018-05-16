@@ -39,6 +39,10 @@ public class WorkoutServiceImpl implements WorkoutService {
         this.dao = dao;
     }
 
+    public WorkoutEntity getWorkout(String name){
+        return dao.getWorkout(name);
+    }
+
     /**
      * Egy edzés nevének megkapása id alapján.
      * @param id - edzés idja.
@@ -63,4 +67,7 @@ public class WorkoutServiceImpl implements WorkoutService {
     public void createWorkout(WorkoutEntity workoutEntity) {
         dao.persist(workoutEntity);
     }
+
+    @Override
+    public void deleteWorkout(WorkoutEntity workoutEntity){ dao.delete(workoutEntity);}
 }

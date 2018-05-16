@@ -43,4 +43,5 @@ public interface FoodDAO {
     List<FoodEntity> getAllFood();
 
     void persist(FoodEntity entity);
+    void delete(FoodEntity entity);
 }

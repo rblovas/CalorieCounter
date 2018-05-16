@@ -75,4 +75,9 @@ public class FoodServiceImpl implements FoodService {
     public void createFood(FoodEntity foodEntity) {
         dao.persist(foodEntity);
     }
+
+    @Override
+    public void deleteFood(FoodEntity foodEntity){
+        dao.delete(foodEntity);
+    }
 }

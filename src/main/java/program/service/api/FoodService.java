@@ -43,4 +43,5 @@ public interface FoodService {
     List<String> getAllFoodName();
 
     void createFood(FoodEntity foodEntity);
+    void deleteFood(FoodEntity foodEntity);
 }

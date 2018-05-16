@@ -86,4 +86,11 @@ public class WorkoutDAOImpl implements WorkoutDAO{
         entityManager.persist(entity);
         entityManager.getTransaction().commit();
     }
+
+    @Override
+    public void delete(WorkoutEntity entity){
+        entityManager.getTransaction().begin();
+        entityManager.remove(entity);
+        entityManager.getTransaction().commit();
+    }
 }

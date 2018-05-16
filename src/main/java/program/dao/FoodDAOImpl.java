@@ -76,4 +76,10 @@ public class FoodDAOImpl implements FoodDAO {
         entityManager.getTransaction().commit();
     }
 
+    @Override
+    public void delete(FoodEntity entity){
+        entityManager.getTransaction().begin();
+        entityManager.remove(entity);
+        entityManager.getTransaction().commit();
+    }
 }
