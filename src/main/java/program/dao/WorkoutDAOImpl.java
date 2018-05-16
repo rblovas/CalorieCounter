@@ -80,6 +80,10 @@ public class WorkoutDAOImpl implements WorkoutDAO{
         return (float) query.getSingleResult();
     }
 
+    /**
+     * Új edzés entitás bevitele az adatbázisba.
+     * @param entity - új entitás.
+     */
     @Override
     public void persist(WorkoutEntity entity) {
         entityManager.getTransaction().begin();
@@ -87,6 +91,10 @@ public class WorkoutDAOImpl implements WorkoutDAO{
         entityManager.getTransaction().commit();
     }
 
+    /**
+     * Edzés entitás törlése az adatbázisból.
+     * @param entity - törölni kívánt entitás.
+     */
     @Override
     public void delete(WorkoutEntity entity){
         entityManager.getTransaction().begin();

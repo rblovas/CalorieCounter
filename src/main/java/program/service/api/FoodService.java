@@ -42,6 +42,15 @@ public interface FoodService {
      */
     List<String> getAllFoodName();
 
+    /**
+     * Új étel entitás felvétele.
+     * @param foodEntity - új entitás.
+     */
     void createFood(FoodEntity foodEntity);
+
+    /**
+     * Étel entitás törlése.
+     * @param foodEntity - törölni kívánt entitás.
+     */
     void deleteFood(FoodEntity foodEntity);
 }

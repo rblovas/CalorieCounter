@@ -48,6 +48,15 @@ public interface WorkoutDAO {
      */
     float getWorkoutCalorieById(Long id);
 
+    /**
+     * Új edzés entitás bevitele az adatbázisba.
+     * @param entity - új entitás.
+     */
     void persist(WorkoutEntity entity);
+
+    /**
+     * Edzés entitás törlése az adatbázisból.
+     * @param entity - törölni kívánt entitás.
+     */
     void delete(WorkoutEntity entity);
 }

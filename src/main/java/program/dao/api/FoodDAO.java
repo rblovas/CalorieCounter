@@ -42,6 +42,15 @@ public interface FoodDAO {
      */
     List<FoodEntity> getAllFood();
 
+    /**
+     * Új étel entitás bevitele az adatbázisba.
+     * @param entity - új entitás.
+     */
     void persist(FoodEntity entity);
+
+    /**
+     * Étel entitás törlése az adatbázisból.
+     * @param entity - törölni kívánt entitás.
+     */
     void delete(FoodEntity entity);
 }

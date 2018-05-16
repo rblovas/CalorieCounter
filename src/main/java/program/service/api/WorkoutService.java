@@ -27,6 +27,11 @@ import program.model.WorkoutEntity;
  */
 public interface WorkoutService {
 
+    /**
+     * Az edzés entitás megkapása annak neve alapján.
+     * @param name - étel neve.
+     * @return - étel entitás.
+     */
     WorkoutEntity getWorkout(String name);
 
     /**
@@ -43,6 +48,15 @@ public interface WorkoutService {
      */
     float getWorkoutCalorieById(Long id);
 
+    /**
+     * Új edzés entitás felvétele.
+     * @param workoutEntity - új entitás.
+     */
     void createWorkout(WorkoutEntity workoutEntity);
+
+    /**
+     * Edzés entitás törlése.
+     * @param  workoutEntity - törölni kívánt entitás.
+     */
     void deleteWorkout(WorkoutEntity workoutEntity);
 }

@@ -69,6 +69,10 @@ public class FoodDAOImpl implements FoodDAO {
         return typedQuery.getResultList();
     }
 
+    /**
+     * Új étel entitás bevitele az adatbázisba.
+     * @param entity - új entitás.
+     */
     @Override
     public void persist(FoodEntity entity) {
         entityManager.getTransaction().begin();
@@ -76,6 +80,10 @@ public class FoodDAOImpl implements FoodDAO {
         entityManager.getTransaction().commit();
     }
 
+    /**
+     * Étel entitás törlése az adatbázisból.
+     * @param entity - törölni kívánt entitás.
+     */
     @Override
     public void delete(FoodEntity entity){
         entityManager.getTransaction().begin();

@@ -71,11 +71,19 @@ public class FoodServiceImpl implements FoodService {
         return names;
     }
 
+    /**
+     * Új étel entitás felvétele.
+     * @param foodEntity - új entitás.
+     */
     @Override
     public void createFood(FoodEntity foodEntity) {
         dao.persist(foodEntity);
     }
 
+    /**
+     * Étel entitás törlése.
+     * @param foodEntity - törölni kívánt entitás.
+     */
     @Override
     public void deleteFood(FoodEntity foodEntity){
         dao.delete(foodEntity);

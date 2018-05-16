@@ -39,6 +39,11 @@ public class WorkoutServiceImpl implements WorkoutService {
         this.dao = dao;
     }
 
+    /**
+     * Az edzés entitás megkapása annak neve alapján.
+     * @param name - étel neve.
+     * @return - étel entitás.
+     */
     public WorkoutEntity getWorkout(String name){
         return dao.getWorkout(name);
     }
@@ -63,11 +68,19 @@ public class WorkoutServiceImpl implements WorkoutService {
         return dao.getWorkoutCalorieById(id);
     }
 
+    /**
+     * Új edzés entitás felvétele.
+     * @param workoutEntity - új entitás.
+     */
     @Override
     public void createWorkout(WorkoutEntity workoutEntity) {
         dao.persist(workoutEntity);
     }
 
+    /**
+     * Edzés entitás törlése.
+     * @param  workoutEntity - törölni kívánt entitás.
+     */
     @Override
     public void deleteWorkout(WorkoutEntity workoutEntity){ dao.delete(workoutEntity);}
 }
