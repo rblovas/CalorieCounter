@@ -70,4 +70,9 @@ public class FoodServiceImpl implements FoodService {
 
         return names;
     }
+
+    @Override
+    public void createFood(FoodEntity foodEntity) {
+        dao.persist(foodEntity);
+    }
 }

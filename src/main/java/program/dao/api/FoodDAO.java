@@ -41,4 +41,6 @@ public interface FoodDAO {
      * @return étel entitás.
      */
     List<FoodEntity> getAllFood();
+
+    void persist(FoodEntity entity);
 }

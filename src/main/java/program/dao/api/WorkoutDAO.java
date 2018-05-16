@@ -47,4 +47,6 @@ public interface WorkoutDAO {
      * @return - edzés kalória/perce.
      */
     float getWorkoutCalorieById(Long id);
+
+    void persist(WorkoutEntity entity);
 }

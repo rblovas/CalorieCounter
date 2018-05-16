@@ -40,4 +40,6 @@ public interface WorkoutService {
      * @return - edzés kalória/perce.
      */
     float getWorkoutCalorieById(Long id);
+
+    void createWorkout(WorkoutEntity workoutEntity);
 }

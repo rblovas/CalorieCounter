@@ -68,4 +68,12 @@ public class FoodDAOImpl implements FoodDAO {
         TypedQuery<FoodEntity> typedQuery = entityManager.createQuery("select f from FoodEntity f", FoodEntity.class);
         return typedQuery.getResultList();
     }
+
+    @Override
+    public void persist(FoodEntity entity) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+    }
+
 }

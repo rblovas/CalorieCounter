@@ -58,4 +58,9 @@ public class WorkoutServiceImpl implements WorkoutService {
     public float getWorkoutCalorieById(Long id) {
         return dao.getWorkoutCalorieById(id);
     }
+
+    @Override
+    public void createWorkout(WorkoutEntity workoutEntity) {
+        dao.persist(workoutEntity);
+    }
 }

@@ -79,4 +79,11 @@ public class WorkoutDAOImpl implements WorkoutDAO{
 
         return (float) query.getSingleResult();
     }
+
+    @Override
+    public void persist(WorkoutEntity entity) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(entity);
+        entityManager.getTransaction().commit();
+    }
 }

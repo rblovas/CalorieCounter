@@ -41,4 +41,6 @@ public interface FoodService {
      * @return - az összes étel nevének listája.
      */
     List<String> getAllFoodName();
+
+    void createFood(FoodEntity foodEntity);
 }
