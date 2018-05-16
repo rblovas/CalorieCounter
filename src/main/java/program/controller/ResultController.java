@@ -47,7 +47,7 @@ public class ResultController extends Controller {
         log.info("Kiírásra került a kiszámolt kalóriamennyiség");
 
         for (long type = 1; type < 7; type++) {
-            textArea.appendText(workoutService.getWorkoutNameById(type) + "\t\t" + (int) (sum / workoutService.getWorkoutCalorieById(type)) + "\n");
+            textArea.appendText(workoutService.getWorkoutNameById(type) + "\t\t" + (int) (sum / workoutService.getWorkoutCalorieById(type)) + " perc.\n");
         }
         log.info("Az összes gyakorlat és perc kiírásra került.");
     }

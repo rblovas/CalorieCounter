@@ -3,22 +3,39 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controller.ResultController">
+<AnchorPane fx:id="outID" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="outID" stylesheets="@../style/page.css" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="program.controller.ResultController">
     <children>
-        <Label layoutX="287.0" layoutY="59.0" text="Kalóriaösszegük:">
-            <font>
-                <Font size="31.0" />
-            </font>
-        </Label>
-      <Label fx:id="labelCaloria" layoutX="357.0" layoutY="118.0" text="Label">
-         <font>
-            <Font size="37.0" />
-         </font>
-      </Label>
-      <Button fx:id="buttonGoToMainpage" layoutX="338.0" layoutY="487.0" mnemonicParsing="false" onAction="#goToMainpage" text="Vissza az előző lapra" />
-      <TextArea fx:id="textArea" layoutX="163.0" layoutY="193.0" prefHeight="276.0" prefWidth="475.0" />
+        <AnchorPane layoutX="100.0" prefHeight="500.0" prefWidth="400.0">
+            <effect>
+                <DropShadow />
+            </effect>
+        </AnchorPane>
+        <AnchorPane layoutX="100.0" prefHeight="500.0" prefWidth="400.0" styleClass="inID" stylesheets="@../style/page.css">
+            <children>
+                <Label layoutX="111.0" layoutY="49.0" text="Kalóriaösszeg:">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+
+                <TextArea fx:id="textArea" layoutX="55.0" layoutY="150.0" prefHeight="200.0" prefWidth="300.0" />
+
+                <Button layoutX="152.0" layoutY="420.0" mnemonicParsing="false" onAction="#goToMainpage" text="Vissza">
+                    <font>
+                        <Font size="20.0" />
+                    </font>
+                </Button>
+            <Label fx:id="labelCaloria" layoutX="168.0" layoutY="93.0" text="1000">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+
+            </children>
+        </AnchorPane>
     </children>
 </AnchorPane>

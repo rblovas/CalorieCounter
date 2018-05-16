@@ -18,6 +18,9 @@
     <description>A program meg tudja adni egy étel körülbelüli kalóriatartalmát , összetevői megadása által.
         Ezután pedig megmutatná, hogy mennyi mozgással tudnánk ezt a kalóriamennyiséget ledolgozni, különböző edzésformák segítségével.</description>
     <url>https://github.com/rblovas/CalorieCounter.git</url>
+
+    <packaging>jar</packaging>
+
     <developers>
         <developer>
             <name>Rita Barbara Lovas</name>
@@ -38,6 +41,45 @@
         </license>
     </licenses>
 
+
+    <profiles>
+        <profile>
+            <id>tinylog</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.tinylog</groupId>
+                    <artifactId>tinylog</artifactId>
+                    <version>1.3.4</version>
+                    <scope>runtime</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.tinylog</groupId>
+                    <artifactId>slf4j-binding</artifactId>
+                    <version>1.3.4</version>
+                    <scope>runtime</scope>
+                </dependency>
+            </dependencies>
+        </profile>
+        <profile>
+            <id>logback</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <dependencies>
+                <dependency>
+                    <groupId>ch.qos.logback</groupId>
+                    <artifactId>logback-classic</artifactId>
+                    <version>1.2.3</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-api</artifactId>
+                    <version>1.7.25</version>
+                </dependency>
+            </dependencies>
+        </profile>
+    </profiles>
+
     <properties>
         <!-- Resources állományok kódlap beállítása ("[WARNING] Using platform encoding ??? actually) to copy filtered resources, i.e. build is platform dependent!") -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,9 +96,6 @@
 
         <!-- Main class -->
         <mainClass>program.Main</mainClass>
-
-        <!-- Maven teszt fázis futtatás kikapcsolása-->
-        <maven.test.skip>true</maven.test.skip>
 
     </properties>
     <dependencies>
@@ -164,6 +203,31 @@
                     <source>1.8</source>
                     <target>1.8</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <version>4.2.0</version>
+                <configuration>
+                    <targetPercentage>10%</targetPercentage>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>verify</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>pre-site</id>
+                        <phase>pre-site</phase>
+                        <goals>
+                            <goal>instrument</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

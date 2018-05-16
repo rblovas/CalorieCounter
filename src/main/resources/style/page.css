@@ -1,0 +1,6 @@
+.inID{
+    -fx-background-color: white;
+}
+.outID{
+    -fx-background-image: url("../IMG/eper.jpg");
+}
